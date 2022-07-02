@@ -1,0 +1,53 @@
+Sort by date, filter months only, posibility to have many machines with different pay dates,
+error displayer, search for client
+
+Event connect (push button)
+Controller gets all models needed and constructs the info
+View then receives the needed items from the controller and updates them
+
+
+for document in documents:
+    print document.title, document.keywords
+
+
+# ------------------------------
+# Creating new document
+# ------------------------------
+
+document = Document({
+    "title": "test document",
+    "slug": "test-document"
+})
+
+print document._id # none
+document.save()
+print document._id # "50d3cb0068c0064a21e76be4"
+
+# -------------------------
+# Getting a single document
+# -------------------------
+
+document = Document({
+    "_id": "50d3cb0068c0064a21e76be4"
+})
+
+print document.title # None
+document.reload()
+print document.title # "test document"
+
+# -----------------
+# Updating document
+# -----------------
+
+document.title = "test document 2"
+document.save()
+print document.title # "test document 2"
+document.reload()
+print document.title # "test document 2"
+
+# -----------------
+# Removing document
+# -----------------
+
+document.remove()
+print document # {}
